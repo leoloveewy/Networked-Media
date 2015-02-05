@@ -1,8 +1,10 @@
 
+// Version 1: Defining Static Routes
 // every servi application must have these 2 lines
 
 var servi = rquire('servi');
 var app = new servi(true);
+
 // set the port to 3002
 port(3002);
 
@@ -43,4 +45,30 @@ function show3(request){
 }
 
  //start the server!
+start();
+
+---------------------------------------------------------------------------------------------------------------------
+
+Version 2: Define one or more dynamic routes
+
+// every servi application must have these 2 lines
+var servi=require('servi');
+var app= new servi(true);
+
+// Set the port number to 4000
+port(4000);
+
+
+serveFiles("public"); 
+
+//use variable in a route
+route('/myPage/:myPageName',showPageName);
+
+// This is the function that corresponds to the route '/myPage/:myPageName' from above
+function showPageName(request){
+	// Access the value of the variable ":myPageName" with the syntax 'request.params.myPageName'
+	request.respont("now you are at:"+request.params.myPageName);
+
+}
+// start the server!
 start();
